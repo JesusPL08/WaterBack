@@ -1,8 +1,9 @@
-import { Controller, Get, Post, Body, Param, Put, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Put, Delete,UseGuards } from '@nestjs/common';
 import { ProfileService } from './profile.service';
+import { AuthGuard } from '@nestjs/passport';
 import { CreateProfileDto } from './dto/create-profile.dto';
 import { UpdateProfileDto } from './dto/update-profile.dto';
-
+@UseGuards(AuthGuard('jwt'))
 @Controller('profiles')
 export class ProfileController {
   constructor(private readonly profileService: ProfileService) {}

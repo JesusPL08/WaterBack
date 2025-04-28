@@ -1,8 +1,10 @@
-import { Controller, Get, Post, Body, Param, Put, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Put, Delete,UseGuards  } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 import { SalaryService } from './salary.service';
 import { CreateSalaryDto } from './dto/create-salary.dto';
 import { UpdateSalaryDto } from './dto/update-salary.dto';
 
+@UseGuards(AuthGuard('jwt'))
 @Controller('salaries')
 export class SalaryController {
   constructor(private readonly salaryService: SalaryService) {}
