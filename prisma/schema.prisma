@@ -1,0 +1,280 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Profile {
+  id    Int    @id @default(autoincrement())
+  name  String
+  rank  Int
+  users User[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime?
+}
+
+model Salary {
+  id        Int    @id @default(autoincrement())
+  name      String
+  baseRate  Float
+  users     User[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime?
+}
+
+model Client {
+  id      Int    @id @default(autoincrement())
+  name    String
+  address String
+  branches Branch[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime?
+}
+
+model Branch {
+  id              Int     @id @default(autoincrement())
+  name            String
+  address         String
+  phoneNumber     String
+  manager         String
+  salePrice       Float
+  razonSocial     String
+  rfc             String
+  regimenFiscal   String
+  codigoPostal    String
+  usoCfdi         String
+  clientId        Int
+  client          Client  @relation(fields: [clientId], references: [id])
+  users           User[]
+  commissions     Commission[]
+  sales           Sale[]
+  routes          Route[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime?
+}
+
+model User {
+  id            Int    @id @default(autoincrement())
+  profileId     Int
+  salaryId      Int
+  name          String
+  phoneNumber   String
+  rfc           String
+  hiringDate    DateTime
+  branchId      Int?
+
+  profile       Profile @relation(fields: [profileId], references: [id])
+  salary        Salary  @relation(fields: [salaryId], references: [id])
+  branch        Branch? @relation(fields: [branchId], references: [id])
+
+  logins        Login[]
+  commissions   Commission[]
+  sales         Sale[]
+  bonuses       Bonus[]
+  penalties     PenaltyCharge[]
+  attendances   Attendance[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime?
+}
+
+model Login {
+  id       Int    @id @default(autoincrement())
+  user     String
+  password String
+  userId   Int
+
+  userRel  User   @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime?
+}
+
+model Commission {
+  id             Int     @id @default(autoincrement())
+  branchId       Int
+  userId         Int
+  commissionSale Float
+  volume         Int
+  dateCreation   DateTime
+
+  branch         Branch @relation(fields: [branchId], references: [id])
+  user           User   @relation(fields: [userId], references: [id])
+  sales          Sale[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime?
+}
+
+model Sale {
+  id          Int    @id @default(autoincrement())
+  branchId    Int
+  commissionId Int
+  userId      Int
+  volume      Int
+  payType     Int
+  invoiced    Boolean
+  uuid        String
+  invoiceDate DateTime
+  folio       String
+
+  branch      Branch @relation(fields: [branchId], references: [id])
+  commission  Commission @relation(fields: [commissionId], references: [id])
+  user        User @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime?
+}
+
+model Route {
+  id            Int    @id @default(autoincrement())
+  branchId      Int
+  priority      Int
+  volume        Int
+  deliveryDate  DateTime
+
+  branch        Branch @relation(fields: [branchId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime?
+}
+
+model Bonus {
+  id          Int    @id @default(autoincrement())
+  userId      Int
+  amount      Float
+  description String
+  date        DateTime
+
+  user        User @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime?
+}
+
+model PenaltyCharge {
+  id          Int    @id @default(autoincrement())
+  userId      Int
+  amount      Float
+  description String
+  date        DateTime
+
+  user        User @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime?
+}
+
+model Attendance {
+  id              Int    @id @default(autoincrement())
+  userId          Int
+  date            DateTime
+  attendanceTypeId Int
+  workedHours     Float
+  paid            Boolean
+  notes           String
+
+  user            User @relation(fields: [userId], references: [id])
+  attendanceType  AttendanceType @relation(fields: [attendanceTypeId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime?
+}
+
+model AttendanceType {
+  id       Int    @id @default(autoincrement())
+  name     String
+  paidDay  Boolean
+  payMult  Float
+
+  attendances Attendance[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime?
+}
+
+model Supplier {
+  id           Int    @id @default(autoincrement())
+  name         String
+  phoneNumber  String
+  costs        Cost[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime?
+}
+
+model Product {
+  id          Int    @id @default(autoincrement())
+  name        String
+  description String
+  brand       String
+  type        String
+  costs       Cost[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime?
+}
+
+model Cost {
+  id          Int    @id @default(autoincrement())
+  price       Float
+  supplierId  Int
+  productId   Int
+
+  supplier    Supplier @relation(fields: [supplierId], references: [id])
+  product     Product  @relation(fields: [productId], references: [id])
+  expenses    Expense[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime?
+}
+
+model ExpenseType {
+  id          Int    @id @default(autoincrement())
+  name        String
+  description String
+  expenses    Expense[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime?
+}
+
+model Expense {
+  id             Int    @id @default(autoincrement())
+  costId         Int
+  expenseTypeId  Int
+  units          Int
+  total          Float
+  date           DateTime
+
+  cost           Cost @relation(fields: [costId], references: [id])
+  expenseType    ExpenseType @relation(fields: [expenseTypeId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime?
+}
