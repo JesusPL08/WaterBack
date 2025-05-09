@@ -1,7 +1,6 @@
-import { Controller, Get, Post, Body, Param, Put, Delete,UseGuards  } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Put, Delete, Query } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
-import { AuthGuard } from '@nestjs/passport';
 import { UpdateUserDto } from './dto/update-user.dto';
 
 @Controller('users')
@@ -31,5 +30,15 @@ export class UsersController {
   @Delete(':id')
   softDelete(@Param('id') id: string) {
     return this.usersService.softDelete(+id);
+  }
+
+  @Get(':id/salary-report')
+  getSalaryReport(
+    @Param('id') id: string,
+    @Query('period') period: 'week' | 'month' | 'year',
+    @Query('date') date?: string
+  ) {
+    const refDate = date ? new Date(date) : new Date();
+    return this.usersService.getSalaryReport(+id, period, refDate);
   }
 }

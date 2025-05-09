@@ -18,9 +18,10 @@ import { CostModule } from './cost/cost.module';
 import { ProductModule } from './product/product.module';
 import { ExpenseTypeModule } from './expense-type/expense-type.module';
 import { ExpenseModule } from './expense/expense.module';
+import { ReportsModule } from './reports/reports.module';
 
 @Module({
-  imports: [TaskModule, AuthModule, UsersModule, ProfileModule, SalaryModule, ClientModule, BranchModule, SaleModule, CommissionModule, RouteModule, BonusModule, PenaltyChargeModule, AttendanceTypeModule, AttendanceModule, SupplierModule, CostModule, ProductModule, ExpenseTypeModule, ExpenseModule],
+  imports: [TaskModule, AuthModule, UsersModule, ProfileModule, SalaryModule, ClientModule, BranchModule, SaleModule, CommissionModule, RouteModule, BonusModule, PenaltyChargeModule, AttendanceTypeModule, AttendanceModule, SupplierModule, CostModule, ProductModule, ExpenseTypeModule, ExpenseModule, ReportsModule],
   controllers: [],
 
 })
