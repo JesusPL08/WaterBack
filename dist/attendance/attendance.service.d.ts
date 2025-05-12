@@ -1,0 +1,67 @@
+import { PrismaService } from '../prisma/prisma.service';
+import { CreateAttendanceDto } from './dto/create-attendance.dto';
+import { UpdateAttendanceDto } from './dto/update-attendance.dto';
+export declare class AttendanceService {
+    private prisma;
+    constructor(prisma: PrismaService);
+    create(data: CreateAttendanceDto): Promise<{
+        id: number;
+        userId: number;
+        createdAt: Date;
+        updatedAt: Date;
+        deletedAt: Date | null;
+        date: Date;
+        attendanceTypeId: number;
+        workedHours: number;
+        paid: boolean;
+        notes: string;
+    }>;
+    findAll(): Promise<{
+        id: number;
+        userId: number;
+        createdAt: Date;
+        updatedAt: Date;
+        deletedAt: Date | null;
+        date: Date;
+        attendanceTypeId: number;
+        workedHours: number;
+        paid: boolean;
+        notes: string;
+    }[]>;
+    findOne(id: number): Promise<{
+        id: number;
+        userId: number;
+        createdAt: Date;
+        updatedAt: Date;
+        deletedAt: Date | null;
+        date: Date;
+        attendanceTypeId: number;
+        workedHours: number;
+        paid: boolean;
+        notes: string;
+    }>;
+    update(id: number, data: UpdateAttendanceDto): Promise<{
+        id: number;
+        userId: number;
+        createdAt: Date;
+        updatedAt: Date;
+        deletedAt: Date | null;
+        date: Date;
+        attendanceTypeId: number;
+        workedHours: number;
+        paid: boolean;
+        notes: string;
+    }>;
+    softDelete(id: number): Promise<{
+        id: number;
+        userId: number;
+        createdAt: Date;
+        updatedAt: Date;
+        deletedAt: Date | null;
+        date: Date;
+        attendanceTypeId: number;
+        workedHours: number;
+        paid: boolean;
+        notes: string;
+    }>;
+}

@@ -1,0 +1,82 @@
+import { PrismaService } from '../prisma/prisma.service';
+import { CreateSaleDto } from './dto/create-sale.dto';
+import { UpdateSaleDto } from './dto/update-sale.dto';
+export declare class SaleService {
+    private prisma;
+    constructor(prisma: PrismaService);
+    create(data: CreateSaleDto): Promise<{
+        id: number;
+        userId: number;
+        createdAt: Date;
+        updatedAt: Date;
+        deletedAt: Date | null;
+        branchId: number;
+        commissionId: number;
+        volume: number;
+        payType: number;
+        invoiced: boolean;
+        uuid: string;
+        invoiceDate: Date;
+        folio: string;
+    }>;
+    findAll(): Promise<{
+        id: number;
+        userId: number;
+        createdAt: Date;
+        updatedAt: Date;
+        deletedAt: Date | null;
+        branchId: number;
+        commissionId: number;
+        volume: number;
+        payType: number;
+        invoiced: boolean;
+        uuid: string;
+        invoiceDate: Date;
+        folio: string;
+    }[]>;
+    findOne(id: number): Promise<{
+        id: number;
+        userId: number;
+        createdAt: Date;
+        updatedAt: Date;
+        deletedAt: Date | null;
+        branchId: number;
+        commissionId: number;
+        volume: number;
+        payType: number;
+        invoiced: boolean;
+        uuid: string;
+        invoiceDate: Date;
+        folio: string;
+    }>;
+    update(id: number, data: UpdateSaleDto): Promise<{
+        id: number;
+        userId: number;
+        createdAt: Date;
+        updatedAt: Date;
+        deletedAt: Date | null;
+        branchId: number;
+        commissionId: number;
+        volume: number;
+        payType: number;
+        invoiced: boolean;
+        uuid: string;
+        invoiceDate: Date;
+        folio: string;
+    }>;
+    softDelete(id: number): Promise<{
+        id: number;
+        userId: number;
+        createdAt: Date;
+        updatedAt: Date;
+        deletedAt: Date | null;
+        branchId: number;
+        commissionId: number;
+        volume: number;
+        payType: number;
+        invoiced: boolean;
+        uuid: string;
+        invoiceDate: Date;
+        folio: string;
+    }>;
+}
