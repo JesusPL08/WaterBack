@@ -1,23 +1,19 @@
-import { Controller, Post, Put, Param, Body } from '@nestjs/common';
-import { LoginService } from '../login/login.service';
+import { Controller, Post, Body, Put } from '@nestjs/common';
+import { LoginService } from './login.service';
+import { CreateLoginDto } from '../dto/create-login.dto';
+import { UpdateLoginDto } from '../dto/update-login.dto';
 
-@Controller('auth/login')
+@Controller('logins')
 export class LoginController {
   constructor(private readonly loginService: LoginService) {}
 
-  @Post('register/:userId')
-  createLogin(
-    @Param('userId') userId: string,
-    @Body() body: { user: string; password: string },
-  ) {
-    return this.loginService.create(+userId, body.user, body.password);
+  @Post()
+  async create(@Body() data: CreateLoginDto) {
+    return this.loginService.create(data);
   }
 
-  @Put('update/:userId')
-  updateLogin(
-    @Param('userId') userId: string,
-    @Body() body: { user?: string; password?: string },
-  ) {
-    return this.loginService.update(+userId, body);
+  @Put()
+  async update(@Body() data: UpdateLoginDto) {
+    return this.loginService.update(data);
   }
 }

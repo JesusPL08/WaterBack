@@ -14,38 +14,38 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoginController = void 0;
 const common_1 = require("@nestjs/common");
-const login_service_1 = require("../login/login.service");
+const login_service_1 = require("./login.service");
+const create_login_dto_1 = require("../dto/create-login.dto");
+const update_login_dto_1 = require("../dto/update-login.dto");
 let LoginController = class LoginController {
     loginService;
     constructor(loginService) {
         this.loginService = loginService;
     }
-    createLogin(userId, body) {
-        return this.loginService.create(+userId, body.user, body.password);
+    async create(data) {
+        return this.loginService.create(data);
     }
-    updateLogin(userId, body) {
-        return this.loginService.update(+userId, body);
+    async update(data) {
+        return this.loginService.update(data);
     }
 };
 exports.LoginController = LoginController;
 __decorate([
-    (0, common_1.Post)('register/:userId'),
-    __param(0, (0, common_1.Param)('userId')),
-    __param(1, (0, common_1.Body)()),
+    (0, common_1.Post)(),
+    __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, Object]),
-    __metadata("design:returntype", void 0)
-], LoginController.prototype, "createLogin", null);
+    __metadata("design:paramtypes", [create_login_dto_1.CreateLoginDto]),
+    __metadata("design:returntype", Promise)
+], LoginController.prototype, "create", null);
 __decorate([
-    (0, common_1.Put)('update/:userId'),
-    __param(0, (0, common_1.Param)('userId')),
-    __param(1, (0, common_1.Body)()),
+    (0, common_1.Put)(),
+    __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, Object]),
-    __metadata("design:returntype", void 0)
-], LoginController.prototype, "updateLogin", null);
+    __metadata("design:paramtypes", [update_login_dto_1.UpdateLoginDto]),
+    __metadata("design:returntype", Promise)
+], LoginController.prototype, "update", null);
 exports.LoginController = LoginController = __decorate([
-    (0, common_1.Controller)('auth/login'),
+    (0, common_1.Controller)('logins'),
     __metadata("design:paramtypes", [login_service_1.LoginService])
 ], LoginController);
 //# sourceMappingURL=login.controller.js.map

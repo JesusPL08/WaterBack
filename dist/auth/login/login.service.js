@@ -18,26 +18,32 @@ let LoginService = class LoginService {
     constructor(prisma) {
         this.prisma = prisma;
     }
-    async create(userId, user, password) {
-        const hashedPassword = await bcrypt.hash(password, 10);
+    async create(data) {
+        const hashedPassword = await bcrypt.hash(data.password, 10);
         return this.prisma.login.create({
             data: {
-                user,
+                userId: data.userId,
+                user: data.user,
                 password: hashedPassword,
-                userId,
             },
         });
     }
-    async update(userId, data) {
-        const loginData = {};
+    async update(data) {
+        const existing = await this.prisma.login.findFirst({
+            where: { userId: data.userId },
+        });
+        if (!existing) {
+            throw new common_1.NotFoundException('Login no encontrado');
+        }
+        const updatedData = {};
         if (data.user)
-            loginData.user = data.user;
+            updatedData.user = data.user;
         if (data.password) {
-            loginData.password = await bcrypt.hash(data.password, 10);
+            updatedData.password = await bcrypt.hash(data.password, 10);
         }
         return this.prisma.login.updateMany({
-            where: { userId },
-            data: loginData,
+            where: { userId: data.userId },
+            data: updatedData,
         });
     }
 };

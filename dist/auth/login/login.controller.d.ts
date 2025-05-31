@@ -1,11 +1,10 @@
-import { LoginService } from '../login/login.service';
+import { LoginService } from './login.service';
+import { CreateLoginDto } from '../dto/create-login.dto';
+import { UpdateLoginDto } from '../dto/update-login.dto';
 export declare class LoginController {
     private readonly loginService;
     constructor(loginService: LoginService);
-    createLogin(userId: string, body: {
-        user: string;
-        password: string;
-    }): Promise<{
+    create(data: CreateLoginDto): Promise<{
         user: string;
         id: number;
         password: string;
@@ -14,8 +13,5 @@ export declare class LoginController {
         updatedAt: Date;
         deletedAt: Date | null;
     }>;
-    updateLogin(userId: string, body: {
-        user?: string;
-        password?: string;
-    }): Promise<import(".prisma/client").Prisma.BatchPayload>;
+    update(data: UpdateLoginDto): Promise<import(".prisma/client").Prisma.BatchPayload>;
 }

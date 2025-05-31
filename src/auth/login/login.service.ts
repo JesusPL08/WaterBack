@@ -1,34 +1,43 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service';
+import { CreateLoginDto } from '../dto/create-login.dto';
+import { UpdateLoginDto } from '../dto/update-login.dto';
 import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class LoginService {
   constructor(private prisma: PrismaService) {}
 
-  async create(userId: number, user: string, password: string) {
-    const hashedPassword = await bcrypt.hash(password, 10);
+  async create(data: CreateLoginDto) {
+    const hashedPassword = await bcrypt.hash(data.password, 10);
 
     return this.prisma.login.create({
       data: {
-        user,
+        userId: data.userId,
+        user: data.user,
         password: hashedPassword,
-        userId,
       },
     });
   }
 
-  async update(userId: number, data: { user?: string; password?: string }) {
-    const loginData: any = {};
+  async update(data: UpdateLoginDto) {
+    const existing = await this.prisma.login.findFirst({
+      where: { userId: data.userId },
+    });
 
-    if (data.user) loginData.user = data.user;
+    if (!existing) {
+      throw new NotFoundException('Login no encontrado');
+    }
+
+    const updatedData: any = {};
+    if (data.user) updatedData.user = data.user;
     if (data.password) {
-      loginData.password = await bcrypt.hash(data.password, 10);
+      updatedData.password = await bcrypt.hash(data.password, 10);
     }
 
     return this.prisma.login.updateMany({
-      where: { userId },
-      data: loginData,
+      where: { userId: data.userId },
+      data: updatedData,
     });
   }
 }
