@@ -11,7 +11,6 @@ export declare class CommissionService {
         updatedAt: Date;
         deletedAt: Date | null;
         branchId: number;
-        volume: number;
         commissionSale: number;
         dateCreation: Date;
     }>;
@@ -22,7 +21,6 @@ export declare class CommissionService {
         updatedAt: Date;
         deletedAt: Date | null;
         branchId: number;
-        volume: number;
         commissionSale: number;
         dateCreation: Date;
     }[]>;
@@ -33,7 +31,6 @@ export declare class CommissionService {
         updatedAt: Date;
         deletedAt: Date | null;
         branchId: number;
-        volume: number;
         commissionSale: number;
         dateCreation: Date;
     }>;
@@ -44,7 +41,6 @@ export declare class CommissionService {
         updatedAt: Date;
         deletedAt: Date | null;
         branchId: number;
-        volume: number;
         commissionSale: number;
         dateCreation: Date;
     }>;
@@ -55,7 +51,6 @@ export declare class CommissionService {
         updatedAt: Date;
         deletedAt: Date | null;
         branchId: number;
-        volume: number;
         commissionSale: number;
         dateCreation: Date;
     }>;

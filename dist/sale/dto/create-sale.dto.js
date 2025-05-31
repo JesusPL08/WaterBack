@@ -16,47 +16,32 @@ class CreateSaleDto {
     commissionId;
     userId;
     volume;
-    payType;
-    invoiced;
-    uuid;
-    invoiceDate;
-    folio;
+    productSaleId;
 }
 exports.CreateSaleDto = CreateSaleDto;
 __decorate([
     (0, class_validator_1.IsInt)(),
+    (0, class_validator_1.IsPositive)(),
     __metadata("design:type", Number)
 ], CreateSaleDto.prototype, "branchId", void 0);
 __decorate([
     (0, class_validator_1.IsInt)(),
+    (0, class_validator_1.IsPositive)(),
     __metadata("design:type", Number)
 ], CreateSaleDto.prototype, "commissionId", void 0);
 __decorate([
     (0, class_validator_1.IsInt)(),
+    (0, class_validator_1.IsPositive)(),
     __metadata("design:type", Number)
 ], CreateSaleDto.prototype, "userId", void 0);
 __decorate([
     (0, class_validator_1.IsInt)(),
+    (0, class_validator_1.IsPositive)(),
     __metadata("design:type", Number)
 ], CreateSaleDto.prototype, "volume", void 0);
 __decorate([
     (0, class_validator_1.IsInt)(),
+    (0, class_validator_1.IsPositive)(),
     __metadata("design:type", Number)
-], CreateSaleDto.prototype, "payType", void 0);
-__decorate([
-    (0, class_validator_1.IsBoolean)(),
-    __metadata("design:type", Boolean)
-], CreateSaleDto.prototype, "invoiced", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
-    __metadata("design:type", String)
-], CreateSaleDto.prototype, "uuid", void 0);
-__decorate([
-    (0, class_validator_1.IsDateString)(),
-    __metadata("design:type", Date)
-], CreateSaleDto.prototype, "invoiceDate", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
-    __metadata("design:type", String)
-], CreateSaleDto.prototype, "folio", void 0);
+], CreateSaleDto.prototype, "productSaleId", void 0);
 //# sourceMappingURL=create-sale.dto.js.map

@@ -10,9 +10,7 @@ export class CreateCommissionDto {
   @IsNumber()
   commissionSale: number;
 
-  @IsInt()
-  volume: number;
-
   @IsDateString()
   dateCreation: Date;
 }
+

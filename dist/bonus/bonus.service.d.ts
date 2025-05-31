@@ -10,9 +10,9 @@ export declare class BonusService {
         createdAt: Date;
         updatedAt: Date;
         deletedAt: Date | null;
-        date: Date;
         amount: number;
         description: string;
+        date: Date;
     }>;
     findAll(): Promise<{
         id: number;
@@ -20,9 +20,9 @@ export declare class BonusService {
         createdAt: Date;
         updatedAt: Date;
         deletedAt: Date | null;
-        date: Date;
         amount: number;
         description: string;
+        date: Date;
     }[]>;
     findOne(id: number): Promise<{
         id: number;
@@ -30,9 +30,9 @@ export declare class BonusService {
         createdAt: Date;
         updatedAt: Date;
         deletedAt: Date | null;
-        date: Date;
         amount: number;
         description: string;
+        date: Date;
     }>;
     update(id: number, data: UpdateBonusDto): Promise<{
         id: number;
@@ -40,9 +40,9 @@ export declare class BonusService {
         createdAt: Date;
         updatedAt: Date;
         deletedAt: Date | null;
-        date: Date;
         amount: number;
         description: string;
+        date: Date;
     }>;
     softDelete(id: number): Promise<{
         id: number;
@@ -50,8 +50,8 @@ export declare class BonusService {
         createdAt: Date;
         updatedAt: Date;
         deletedAt: Date | null;
-        date: Date;
         amount: number;
         description: string;
+        date: Date;
     }>;
 }

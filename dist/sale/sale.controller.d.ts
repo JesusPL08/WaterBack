@@ -13,11 +13,7 @@ export declare class SaleController {
         branchId: number;
         commissionId: number;
         volume: number;
-        payType: number;
-        invoiced: boolean;
-        uuid: string;
-        invoiceDate: Date;
-        folio: string;
+        productSaleId: number;
     }>;
     findAll(): Promise<{
         id: number;
@@ -28,11 +24,7 @@ export declare class SaleController {
         branchId: number;
         commissionId: number;
         volume: number;
-        payType: number;
-        invoiced: boolean;
-        uuid: string;
-        invoiceDate: Date;
-        folio: string;
+        productSaleId: number;
     }[]>;
     findOne(id: string): Promise<{
         id: number;
@@ -43,11 +35,7 @@ export declare class SaleController {
         branchId: number;
         commissionId: number;
         volume: number;
-        payType: number;
-        invoiced: boolean;
-        uuid: string;
-        invoiceDate: Date;
-        folio: string;
+        productSaleId: number;
     }>;
     update(id: string, updateSaleDto: UpdateSaleDto): Promise<{
         id: number;
@@ -58,11 +46,7 @@ export declare class SaleController {
         branchId: number;
         commissionId: number;
         volume: number;
-        payType: number;
-        invoiced: boolean;
-        uuid: string;
-        invoiceDate: Date;
-        folio: string;
+        productSaleId: number;
     }>;
     softDelete(id: string): Promise<{
         id: number;
@@ -73,10 +57,6 @@ export declare class SaleController {
         branchId: number;
         commissionId: number;
         volume: number;
-        payType: number;
-        invoiced: boolean;
-        uuid: string;
-        invoiceDate: Date;
-        folio: string;
+        productSaleId: number;
     }>;
 }

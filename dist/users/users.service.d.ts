@@ -17,7 +17,17 @@ export declare class UsersService {
         hiringDate: Date;
         branchId: number | null;
     }>;
-    findAll(): Promise<{
+    findAll(): Promise<({
+        logins: {
+            user: string;
+            id: number;
+            password: string;
+            userId: number;
+            createdAt: Date;
+            updatedAt: Date;
+            deletedAt: Date | null;
+        }[];
+    } & {
         id: number;
         createdAt: Date;
         updatedAt: Date;
@@ -29,8 +39,18 @@ export declare class UsersService {
         rfc: string;
         hiringDate: Date;
         branchId: number | null;
-    }[]>;
-    findOne(id: number): Promise<{
+    })[]>;
+    findOne(id: number): Promise<({
+        logins: {
+            user: string;
+            id: number;
+            password: string;
+            userId: number;
+            createdAt: Date;
+            updatedAt: Date;
+            deletedAt: Date | null;
+        }[];
+    } & {
         id: number;
         createdAt: Date;
         updatedAt: Date;
@@ -42,7 +62,7 @@ export declare class UsersService {
         rfc: string;
         hiringDate: Date;
         branchId: number | null;
-    } | null>;
+    }) | null>;
     update(id: number, data: UpdateUserDto): Promise<{
         id: number;
         createdAt: Date;
@@ -68,16 +88,5 @@ export declare class UsersService {
         rfc: string;
         hiringDate: Date;
         branchId: number | null;
-    }>;
-    getSalaryReport(userId: number, period: 'week' | 'month' | 'year', referenceDate?: Date): Promise<{
-        user: string;
-        totalHours: number;
-        hourlySalary: number;
-        totalEarned: number;
-        period: "week" | "month" | "year";
-        dateRange: {
-            start: Date;
-            end: Date;
-        };
     }>;
 }

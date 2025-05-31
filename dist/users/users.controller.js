@@ -37,10 +37,6 @@ let UsersController = class UsersController {
     softDelete(id) {
         return this.usersService.softDelete(+id);
     }
-    getSalaryReport(id, period, date) {
-        const refDate = date ? new Date(date) : new Date();
-        return this.usersService.getSalaryReport(+id, period, refDate);
-    }
 };
 exports.UsersController = UsersController;
 __decorate([
@@ -78,15 +74,6 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "softDelete", null);
-__decorate([
-    (0, common_1.Get)(':id/salary-report'),
-    __param(0, (0, common_1.Param)('id')),
-    __param(1, (0, common_1.Query)('period')),
-    __param(2, (0, common_1.Query)('date')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, String, String]),
-    __metadata("design:returntype", void 0)
-], UsersController.prototype, "getSalaryReport", null);
 exports.UsersController = UsersController = __decorate([
     (0, common_1.Controller)('users'),
     __metadata("design:paramtypes", [users_service_1.UsersService])

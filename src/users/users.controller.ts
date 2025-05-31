@@ -32,13 +32,5 @@ export class UsersController {
     return this.usersService.softDelete(+id);
   }
 
-  @Get(':id/salary-report')
-  getSalaryReport(
-    @Param('id') id: string,
-    @Query('period') period: 'week' | 'month' | 'year',
-    @Query('date') date?: string
-  ) {
-    const refDate = date ? new Date(date) : new Date();
-    return this.usersService.getSalaryReport(+id, period, refDate);
-  }
+
 }

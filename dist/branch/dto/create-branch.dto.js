@@ -43,6 +43,7 @@ __decorate([
 ], CreateBranchDto.prototype, "manager", void 0);
 __decorate([
     (0, class_validator_1.IsNumber)(),
+    (0, class_validator_1.IsPositive)(),
     __metadata("design:type", Number)
 ], CreateBranchDto.prototype, "salePrice", void 0);
 __decorate([
@@ -67,6 +68,7 @@ __decorate([
 ], CreateBranchDto.prototype, "usoCfdi", void 0);
 __decorate([
     (0, class_validator_1.IsNumber)(),
+    (0, class_validator_1.IsPositive)(),
     __metadata("design:type", Number)
 ], CreateBranchDto.prototype, "clientId", void 0);
 //# sourceMappingURL=create-branch.dto.js.map

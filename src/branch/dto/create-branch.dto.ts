@@ -1,4 +1,4 @@
-import { IsString, IsNumber } from 'class-validator';
+import { IsString, IsNumber, IsPositive } from 'class-validator';
 
 export class CreateBranchDto {
   @IsString()
@@ -14,6 +14,7 @@ export class CreateBranchDto {
   manager: string;
 
   @IsNumber()
+  @IsPositive()
   salePrice: number;
 
   @IsString()
@@ -32,5 +33,6 @@ export class CreateBranchDto {
   usoCfdi: string;
 
   @IsNumber()
+  @IsPositive()
   clientId: number;
 }
