@@ -6,87 +6,87 @@ export declare class UsersController {
     constructor(usersService: UsersService);
     create(createUserDto: CreateUserDto): Promise<{
         id: number;
-        createdAt: Date;
-        updatedAt: Date;
-        deletedAt: Date | null;
-        name: string;
         profileId: number;
         salaryId: number;
+        name: string;
         phoneNumber: string;
         rfc: string;
         hiringDate: Date;
         branchId: number | null;
+        createdAt: Date;
+        updatedAt: Date;
+        deletedAt: Date | null;
     }>;
     findAll(): Promise<({
         logins: {
             user: string;
             id: number;
-            password: string;
-            userId: number;
             createdAt: Date;
             updatedAt: Date;
             deletedAt: Date | null;
+            password: string;
+            userId: number;
         }[];
     } & {
         id: number;
-        createdAt: Date;
-        updatedAt: Date;
-        deletedAt: Date | null;
-        name: string;
         profileId: number;
         salaryId: number;
+        name: string;
         phoneNumber: string;
         rfc: string;
         hiringDate: Date;
         branchId: number | null;
+        createdAt: Date;
+        updatedAt: Date;
+        deletedAt: Date | null;
     })[]>;
     findOne(id: string): Promise<({
         logins: {
             user: string;
             id: number;
-            password: string;
-            userId: number;
             createdAt: Date;
             updatedAt: Date;
             deletedAt: Date | null;
+            password: string;
+            userId: number;
         }[];
     } & {
         id: number;
-        createdAt: Date;
-        updatedAt: Date;
-        deletedAt: Date | null;
-        name: string;
         profileId: number;
         salaryId: number;
+        name: string;
         phoneNumber: string;
         rfc: string;
         hiringDate: Date;
         branchId: number | null;
+        createdAt: Date;
+        updatedAt: Date;
+        deletedAt: Date | null;
     }) | null>;
     update(id: string, updateUserDto: UpdateUserDto): Promise<{
         id: number;
-        createdAt: Date;
-        updatedAt: Date;
-        deletedAt: Date | null;
-        name: string;
         profileId: number;
         salaryId: number;
+        name: string;
         phoneNumber: string;
         rfc: string;
         hiringDate: Date;
         branchId: number | null;
+        createdAt: Date;
+        updatedAt: Date;
+        deletedAt: Date | null;
     }>;
     softDelete(id: string): Promise<{
         id: number;
-        createdAt: Date;
-        updatedAt: Date;
-        deletedAt: Date | null;
-        name: string;
         profileId: number;
         salaryId: number;
+        name: string;
         phoneNumber: string;
         rfc: string;
         hiringDate: Date;
         branchId: number | null;
+        createdAt: Date;
+        updatedAt: Date;
+        deletedAt: Date | null;
     }>;
 }

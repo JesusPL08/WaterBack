@@ -6,87 +6,87 @@ export declare class UsersService {
     constructor(prisma: PrismaService);
     create(data: CreateUserDto): Promise<{
         id: number;
-        createdAt: Date;
-        updatedAt: Date;
-        deletedAt: Date | null;
-        name: string;
         profileId: number;
         salaryId: number;
+        name: string;
         phoneNumber: string;
         rfc: string;
         hiringDate: Date;
         branchId: number | null;
+        createdAt: Date;
+        updatedAt: Date;
+        deletedAt: Date | null;
     }>;
     findAll(): Promise<({
         logins: {
             user: string;
             id: number;
-            password: string;
-            userId: number;
             createdAt: Date;
             updatedAt: Date;
             deletedAt: Date | null;
+            password: string;
+            userId: number;
         }[];
     } & {
         id: number;
-        createdAt: Date;
-        updatedAt: Date;
-        deletedAt: Date | null;
-        name: string;
         profileId: number;
         salaryId: number;
+        name: string;
         phoneNumber: string;
         rfc: string;
         hiringDate: Date;
         branchId: number | null;
+        createdAt: Date;
+        updatedAt: Date;
+        deletedAt: Date | null;
     })[]>;
     findOne(id: number): Promise<({
         logins: {
             user: string;
             id: number;
-            password: string;
-            userId: number;
             createdAt: Date;
             updatedAt: Date;
             deletedAt: Date | null;
+            password: string;
+            userId: number;
         }[];
     } & {
         id: number;
-        createdAt: Date;
-        updatedAt: Date;
-        deletedAt: Date | null;
-        name: string;
         profileId: number;
         salaryId: number;
+        name: string;
         phoneNumber: string;
         rfc: string;
         hiringDate: Date;
         branchId: number | null;
+        createdAt: Date;
+        updatedAt: Date;
+        deletedAt: Date | null;
     }) | null>;
     update(id: number, data: UpdateUserDto): Promise<{
         id: number;
-        createdAt: Date;
-        updatedAt: Date;
-        deletedAt: Date | null;
-        name: string;
         profileId: number;
         salaryId: number;
+        name: string;
         phoneNumber: string;
         rfc: string;
         hiringDate: Date;
         branchId: number | null;
+        createdAt: Date;
+        updatedAt: Date;
+        deletedAt: Date | null;
     }>;
     softDelete(id: number): Promise<{
         id: number;
-        createdAt: Date;
-        updatedAt: Date;
-        deletedAt: Date | null;
-        name: string;
         profileId: number;
         salaryId: number;
+        name: string;
         phoneNumber: string;
         rfc: string;
         hiringDate: Date;
         branchId: number | null;
+        createdAt: Date;
+        updatedAt: Date;
+        deletedAt: Date | null;
     }>;
 }

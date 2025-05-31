@@ -6,6 +6,4 @@ export declare class CreateUserDto {
     salaryId: number;
     hiringDate: Date;
     branchId?: number;
-    user: string;
-    password: string;
 }

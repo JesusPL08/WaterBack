@@ -19,8 +19,6 @@ class CreateUserDto {
     salaryId;
     hiringDate;
     branchId;
-    user;
-    password;
 }
 exports.CreateUserDto = CreateUserDto;
 __decorate([
@@ -52,12 +50,4 @@ __decorate([
     (0, class_validator_1.IsInt)(),
     __metadata("design:type", Number)
 ], CreateUserDto.prototype, "branchId", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
-    __metadata("design:type", String)
-], CreateUserDto.prototype, "user", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
-    __metadata("design:type", String)
-], CreateUserDto.prototype, "password", void 0);
 //# sourceMappingURL=create-user.dto.js.map

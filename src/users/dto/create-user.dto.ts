@@ -23,10 +23,4 @@ export class CreateUserDto {
   @IsInt()
   branchId?: number;
 
-  // 👇 Añadimos para login:
-  @IsString()
-  user: string;
-
-  @IsString()
-  password: string;
 }
