@@ -22,11 +22,4 @@ export class UpdateUserDto {
     @IsOptional()
     @IsInt()
     branchId?: number;
-  
-    // 👇 Añadimos para login:
-    @IsString()
-    user: string;
-  
-    @IsString()
-    password: string;
 }
