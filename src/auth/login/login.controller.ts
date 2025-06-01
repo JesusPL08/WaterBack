@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Put } from '@nestjs/common';
+import { Controller, Post, Body, Put, Get, Param } from '@nestjs/common';
 import { LoginService } from './login.service';
 import { CreateLoginDto } from '../dto/create-login.dto';
 import { UpdateLoginDto } from '../dto/update-login.dto';
@@ -16,4 +16,8 @@ export class LoginController {
   async update(@Body() data: UpdateLoginDto) {
     return this.loginService.update(data);
   }
+  @Get('by-user/:userId')
+async findByUserId(@Param('userId') userId: number) {
+  return this.loginService.findByUserId(+userId); // Convertir a número si llega como string
+}
 }

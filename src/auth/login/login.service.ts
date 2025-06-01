@@ -40,4 +40,16 @@ export class LoginService {
       data: updatedData,
     });
   }
+  async findByUserId(userId: number) {
+  const login = await this.prisma.login.findFirst({
+    where: { userId },
+  });
+
+  if (!login) {
+    throw new NotFoundException('Login no encontrado');
+  }
+
+  return login;
+}
+
 }
