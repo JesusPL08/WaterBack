@@ -1,2 +1,5 @@
 # Ignorar solo node_modules
 node_modules/
+dist/
+prisma/migrations
+.vscode/
