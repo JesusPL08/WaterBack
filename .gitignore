@@ -1,3 +1,9 @@
 # Ignorar solo node_modules
 node_modules/
 dist/
+prisma/migrations
+.vscode/
+
+# Optional: OS-specific
+.DS_Store
+Thumbs.db

@@ -51,5 +51,21 @@ export class LoginService {
 
   return login;
 }
+async updatePassword(userId: number, password: string) {
+  const existing = await this.prisma.login.findFirst({
+    where: { userId },
+  });
+
+  if (!existing) {
+    throw new NotFoundException('Login no encontrado');
+  }
+
+  const hashedPassword = await bcrypt.hash(password, 10);
+
+  return this.prisma.login.updateMany({
+    where: { userId },
+    data: { password: hashedPassword },
+  });
+}
 
 }
