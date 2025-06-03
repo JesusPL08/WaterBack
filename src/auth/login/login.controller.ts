@@ -11,13 +11,13 @@ export class LoginController {
   async create(@Body() data: CreateLoginDto) {
     return this.loginService.create(data);
   }
-@Put('update-password/:userId')
-async updatePassword(
-  @Param('userId') userId: number,
-  @Body('password') password: string,
-) {
-  return this.loginService.updatePassword(+userId, password);
-}
+  @Put('update-password/:userId')
+  async updatePassword(
+    @Param('userId') userId: number,
+    @Body('password') password: string,
+  ) {
+    return this.loginService.updatePassword(+userId, password);
+  }
 
   @Put()
   async update(@Body() data: UpdateLoginDto) {
