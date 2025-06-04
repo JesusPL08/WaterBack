@@ -7,9 +7,15 @@ import { UpdateRoutesDayDto } from './dto/update-routes-day.dto';
 export class RoutesDayService {
   constructor(private prisma: PrismaService) {}
 
-  async create(data: CreateRoutesDayDto) {
-    return this.prisma.routesDay.create({ data });
-  }
+async create(data: CreateRoutesDayDto) {
+  return this.prisma.routesDay.create({
+    data: {
+      routeDay: new Date(data.routeDay), // 👈 convertir explícitamente
+      status: data.status
+    }
+  });
+}
+
 
   async findAll() {
     return this.prisma.routesDay.findMany({
