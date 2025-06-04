@@ -9,14 +9,14 @@ export class DeliveryBranchService {
   constructor(private prisma: PrismaService) {}
 
   async create(data: CreateDeliveryBranchDto) {
-    const prismaData: Prisma.DeliveryBranchCreateInput = {
-      user: { connect: { id: data.userId } },
-      branch: { connect: { id: data.branchId } },
+    const prismaData: Prisma.DeliveryBranchUncheckedCreateInput = {
+      userId: data.userId,
+      branchId: data.branchId,
       priority: data.priority,
       status: data.status,
-      ...(data.ticketId && {
-        ticket: { connect: { id: data.ticketId } },
-      }),
+      ticketId: data.ticketId ?? null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
     };
 
     return this.prisma.deliveryBranch.create({ data: prismaData });
@@ -35,21 +35,18 @@ export class DeliveryBranchService {
   }
 
   async update(id: number, data: UpdateDeliveryBranchDto) {
-    const updateData: Prisma.DeliveryBranchUpdateInput = {
+    const prismaData: Prisma.DeliveryBranchUncheckedUpdateInput = {
+      userId: data.userId,
+      branchId: data.branchId,
       priority: data.priority,
       status: data.status,
-      ...(data.userId && { user: { connect: { id: data.userId } } }),
-      ...(data.branchId && { branch: { connect: { id: data.branchId } } }),
-      ...(data.ticketId !== undefined && {
-        ticket: data.ticketId
-          ? { connect: { id: data.ticketId } }
-          : { disconnect: true }, // elimina relación si null o 0
-      }),
+      ticketId: data.ticketId ?? null,
+      updatedAt: new Date(),
     };
 
     return this.prisma.deliveryBranch.update({
       where: { id },
-      data: updateData,
+      data: prismaData,
     });
   }
 
