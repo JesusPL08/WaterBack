@@ -3,24 +3,24 @@ import { PrismaService } from '../prisma/prisma.service';
 import { CreateDeliveryBranchDto } from './dto/create-delivery-branch.dto';
 import { UpdateDeliveryBranchDto } from './dto/update-delivery-branch.dto';
 import { Prisma } from '@prisma/client';
+
 @Injectable()
 export class DeliveryBranchService {
   constructor(private prisma: PrismaService) {}
 
-async create(data: CreateDeliveryBranchDto) {
-  const prismaData: Prisma.DeliveryBranchCreateInput = {
-    user: { connect: { id: data.userId } },
-    branch: { connect: { id: data.branchId } },
-    priority: data.priority,
-    status: data.status,
-    ticket: data.ticketId ? { connect: { id: data.ticketId } } : undefined,
-  };
+  async create(data: CreateDeliveryBranchDto) {
+    const prismaData: Prisma.DeliveryBranchCreateInput = {
+      user: { connect: { id: data.userId } },
+      branch: { connect: { id: data.branchId } },
+      priority: data.priority,
+      status: data.status,
+      ...(data.ticketId && {
+        ticket: { connect: { id: data.ticketId } },
+      }),
+    };
 
-  return this.prisma.deliveryBranch.create({ data: prismaData });
-}
-
-
-
+    return this.prisma.deliveryBranch.create({ data: prismaData });
+  }
 
   async findAll() {
     return this.prisma.deliveryBranch.findMany({
@@ -35,14 +35,21 @@ async create(data: CreateDeliveryBranchDto) {
   }
 
   async update(id: number, data: UpdateDeliveryBranchDto) {
-    const { ticketId, ...rest } = data;
+    const updateData: Prisma.DeliveryBranchUpdateInput = {
+      priority: data.priority,
+      status: data.status,
+      ...(data.userId && { user: { connect: { id: data.userId } } }),
+      ...(data.branchId && { branch: { connect: { id: data.branchId } } }),
+      ...(data.ticketId !== undefined && {
+        ticket: data.ticketId
+          ? { connect: { id: data.ticketId } }
+          : { disconnect: true }, // elimina relación si null o 0
+      }),
+    };
 
     return this.prisma.deliveryBranch.update({
       where: { id },
-      data: {
-        ...rest,
-        ...(ticketId !== undefined ? { ticketId } : {}), // mismo patrón
-      },
+      data: updateData,
     });
   }
 
