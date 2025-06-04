@@ -1,4 +1,4 @@
-import { IsInt, IsPositive, IsOptional } from 'class-validator';
+import { IsInt, IsOptional, IsPositive } from 'class-validator';
 
 export class CreateDeliveryBranchDto {
   @IsInt()
