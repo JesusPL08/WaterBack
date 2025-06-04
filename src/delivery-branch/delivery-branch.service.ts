@@ -8,12 +8,17 @@ export class DeliveryBranchService {
   constructor(private prisma: PrismaService) {}
 
 async create(data: CreateDeliveryBranchDto) {
-  return this.prisma.deliveryBranch.create({
-    data: {
-      ...data,
-      ticketId: data.ticketId ?? null, 
-  });
+  const prismaData: Prisma.DeliveryBranchCreateInput = {
+    user: { connect: { id: data.userId } },
+    branch: { connect: { id: data.branchId } },
+    priority: data.priority,
+    status: data.status,
+    ticket: data.ticketId ? { connect: { id: data.ticketId } } : undefined,
+  };
+
+  return this.prisma.deliveryBranch.create({ data: prismaData });
 }
+
 
 
 
