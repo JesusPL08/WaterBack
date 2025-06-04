@@ -204,16 +204,16 @@ model Ticket {
 }
 
 model DeliveryBranch {
-  id       Int @id @default(autoincrement())
+  id       Int      @id @default(autoincrement())
   userId   Int
   branchId Int
   priority Int
-  ticketId Int
+  ticketId Int?     // Ahora puede ser null
   status   Int
 
   user   User   @relation(fields: [userId], references: [id])
   branch Branch @relation(fields: [branchId], references: [id])
-  ticket Ticket @relation(fields: [ticketId], references: [id])
+  ticket Ticket? @relation(fields: [ticketId], references: [id]) // Relación opcional
 
   routesDeliveries RoutesDelivery[]
 

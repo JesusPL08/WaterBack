@@ -1,4 +1,4 @@
-import { IsInt, IsPositive } from 'class-validator';
+import { IsInt, IsPositive, IsOptional } from 'class-validator';
 
 export class CreateDeliveryBranchDto {
   @IsInt()
@@ -13,9 +13,10 @@ export class CreateDeliveryBranchDto {
   @IsPositive()
   priority: number;
 
+  @IsOptional()
   @IsInt()
   @IsPositive()
-  ticketId: number;
+  ticketId?: number;
 
   @IsInt()
   @IsPositive()
