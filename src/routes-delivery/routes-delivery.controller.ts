@@ -13,6 +13,10 @@ export class RoutesDeliveryController {
   create(@Body() createDto: CreateRoutesDeliveryDto) {
     return this.routesDeliveryService.create(createDto);
   }
+  @Get('by-routes-day/:id')
+findByRoutesDayId(@Param('id') id: string) {
+  return this.routesDeliveryService.findByRoutesDayId(+id);
+}
 
   @Get()
   findAll() {

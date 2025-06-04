@@ -16,6 +16,22 @@ export class RoutesDeliveryService {
       where: { deletedAt: null },
     });
   }
+  async findByRoutesDayId(routesDayId: number) {
+  return this.prisma.routesDelivery.findMany({
+    where: {
+      routesDayId,
+      deletedAt: null,
+    },
+    include: {
+      deliveryBranch: {
+        include: {
+          branch: true, // solo si tienes una relación hacia Branch
+        },
+      },
+    },
+  });
+}
+
 
   async findOne(id: number) {
     return this.prisma.routesDelivery.findFirst({

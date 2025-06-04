@@ -10,7 +10,7 @@ export class RoutesDayService {
 async create(data: CreateRoutesDayDto) {
   return this.prisma.routesDay.create({
     data: {
-      routeDay: new Date(data.routeDay), // 👈 convertir explícitamente
+      routeDay: new Date(data.routeDay),
       status: data.status
     }
   });
