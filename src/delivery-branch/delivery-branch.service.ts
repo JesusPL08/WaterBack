@@ -9,10 +9,7 @@ export class DeliveryBranchService {
 
   async create(data: CreateDeliveryBranchDto) {
     return this.prisma.deliveryBranch.create({
-      data: {
-        ...data,
-        ticketId: data.ticketId ?? null,
-      },
+      data,
     });
   }
 
@@ -31,10 +28,7 @@ export class DeliveryBranchService {
   async update(id: number, data: UpdateDeliveryBranchDto) {
     return this.prisma.deliveryBranch.update({
       where: { id },
-      data: {
-        ...data,
-        ticketId: data.ticketId ?? null,
-      },
+      data,
     });
   }
 
