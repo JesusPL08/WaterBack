@@ -6,13 +6,12 @@ import { Prisma } from '@prisma/client';
 @Injectable()
 export class DeliveryBranchService {
   constructor(private prisma: PrismaService) {}
-  
+
 async create(data: CreateDeliveryBranchDto) {
   return this.prisma.deliveryBranch.create({
     data: {
       ...data,
-      ticketId: data.ticketId ?? null, // <- ya aceptado correctamente
-    },
+      ticketId: data.ticketId ?? null, 
   });
 }
 
