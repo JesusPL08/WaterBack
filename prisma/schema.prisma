@@ -124,13 +124,13 @@ model Login {
 
 model Sale {
   id            Int @id @default(autoincrement())
-  commissionId  Int
+  commissionId  Int?
   userId        Int
   volume        Int
   productSaleId Int
   branchId      Int // <- requerido para relación con Branch
 
-  commission  Commission  @relation(fields: [commissionId], references: [id])
+  commission  Commission?  @relation(fields: [commissionId], references: [id])
   user        User        @relation(fields: [userId], references: [id])
   productSale ProductSale @relation(fields: [productSaleId], references: [id])
   branch      Branch      @relation(fields: [branchId], references: [id])
@@ -223,6 +223,7 @@ model DeliveryBranch {
 
 model RoutesDay {
   id       Int      @id @default(autoincrement())
+  name     String
   status   Boolean
   routeDay DateTime
 
