@@ -1,8 +1,9 @@
-import { IsBoolean,IsString, IsDateString } from 'class-validator';
+import { IsBoolean, IsString, IsDateString } from 'class-validator';
 
 export class CreateRoutesDayDto {
   @IsString()
-  name?: string;
+  name: string; // ← sin el "?" porque es obligatorio
+
   @IsBoolean()
   status: boolean;
 

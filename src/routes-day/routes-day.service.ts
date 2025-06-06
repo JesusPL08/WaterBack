@@ -10,13 +10,12 @@ export class RoutesDayService {
 async create(data: CreateRoutesDayDto) {
   return this.prisma.routesDay.create({
     data: {
+      name: data.name,
       routeDay: new Date(data.routeDay),
-      status: data.status
-    }
+      status: data.status,
+    },
   });
 }
-
-
   async findAll() {
     return this.prisma.routesDay.findMany({
       where: { deletedAt: null },
