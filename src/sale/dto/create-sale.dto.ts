@@ -1,4 +1,4 @@
-import { IsInt, IsPositive } from 'class-validator';
+import { IsInt, IsPositive,IsOptional } from 'class-validator';
 
 export class CreateSaleDto {
   @IsInt()
@@ -6,7 +6,7 @@ export class CreateSaleDto {
   branchId: number;
 
   @IsInt()
-  @IsPositive()
+ @IsOptional()
   commissionId: number;
 
   @IsInt()
