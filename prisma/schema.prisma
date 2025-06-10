@@ -82,6 +82,16 @@ model Branch {
   updatedAt DateTime  @updatedAt
   deletedAt DateTime?
 }
+model Area {
+  id    Int    @id @default(autoincrement())
+  name  String
+
+  users User[] // Relación inversa con User
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime?
+}
 
 model User {
   id          Int      @id @default(autoincrement())
@@ -92,10 +102,12 @@ model User {
   rfc         String
   hiringDate  DateTime
   branchId    Int?
+  area        Int?
 
   profile Profile @relation(fields: [profileId], references: [id])
   salary  Salary  @relation(fields: [salaryId], references: [id])
   branch  Branch? @relation(fields: [branchId], references: [id])
+  area   Area?   @relation(fields: [areaId], references: [id])
 
   logins           Login[]
   commissions      Commission[]
@@ -362,6 +374,8 @@ model Expense {
   units         Int
   total         Float
   date          DateTime
+
+  filePath      String?  // <- Nuevo campo opcional para ruta del archivo
 
   cost        Cost        @relation(fields: [costId], references: [id])
   expenseType ExpenseType @relation(fields: [expenseTypeId], references: [id])
