@@ -8,14 +8,26 @@ datasource db {
 }
 
 model Profile {
-  id    Int    @id @default(autoincrement())
-  name  String
-  rank  Int
-  users User[]
+  id          Int          @id @default(autoincrement())
+  name        String
+  rank        Int
+  users       User[]
+  permissions Permission[] // ← relación many-to-many directa
 
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  deletedAt DateTime?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  deletedAt   DateTime?
+}
+
+model Permission {
+  id          Int          @id @default(autoincrement())
+  action      String
+  module      String
+  profiles    Profile[]    // ← relación inversa many-to-many
+
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  deletedAt   DateTime?
 }
 
 model Salary {
