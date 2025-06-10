@@ -23,4 +23,7 @@ export class CreateUserDto {
   @IsInt()
   branchId?: number;
 
+  @IsOptional()
+  @IsInt()
+  areaId?: number; 
 }

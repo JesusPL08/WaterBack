@@ -25,9 +25,10 @@ import { PriceModule } from './price/price.module';
 import { DeliveryBranchModule } from './delivery-branch/delivery-branch.module';
 import { RoutesDayModule } from './routes-day/routes-day.module';
 import { RoutesDeliveryModule } from './routes-delivery/routes-delivery.module';
+import { AreaModule } from './area/area.module';
 
 @Module({
-  imports: [TaskModule, AuthModule, UsersModule, ProfileModule, SalaryModule, ClientModule, BranchModule, SaleModule, CommissionModule, BonusModule, PenaltyChargeModule, AttendanceTypeModule, AttendanceModule, SupplierModule, CostModule, ProductModule, ExpenseTypeModule, ExpenseModule, ReportsModule, TicketModule, TicketSaleModule, ProductSaleModule, PriceModule, DeliveryBranchModule, RoutesDayModule, RoutesDeliveryModule],
+  imports: [TaskModule, AuthModule, UsersModule, ProfileModule, SalaryModule, ClientModule, BranchModule, SaleModule, CommissionModule, BonusModule, PenaltyChargeModule, AttendanceTypeModule, AttendanceModule, SupplierModule, CostModule, ProductModule, ExpenseTypeModule, ExpenseModule, ReportsModule, TicketModule, TicketSaleModule, ProductSaleModule, PriceModule, DeliveryBranchModule, RoutesDayModule, RoutesDeliveryModule, AreaModule],
   controllers: [],
 
 })

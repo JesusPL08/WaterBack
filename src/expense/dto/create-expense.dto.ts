@@ -1,4 +1,4 @@
-import { IsInt, IsNumber, IsDateString } from 'class-validator';
+import { IsInt, IsNumber, IsDateString, IsOptional, IsString } from 'class-validator';
 
 export class CreateExpenseDto {
   @IsInt()
@@ -15,4 +15,8 @@ export class CreateExpenseDto {
 
   @IsDateString()
   date: Date;
+
+  @IsOptional()
+  @IsString()
+  filePath?: string;
 }
