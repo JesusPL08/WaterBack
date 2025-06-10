@@ -1,5 +1,4 @@
-
-import { IsString, IsInt } from 'class-validator';
+import { IsString, IsInt, IsArray, IsOptional } from 'class-validator';
 
 export class UpdateProfileDto {
   @IsString()
@@ -7,4 +6,8 @@ export class UpdateProfileDto {
 
   @IsInt()
   rank: number;
+
+  @IsOptional()
+  @IsArray()
+  permissions?: number[]; // IDs de permisos a asociar
 }
