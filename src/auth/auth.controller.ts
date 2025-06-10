@@ -13,9 +13,11 @@ export class AuthController {
   }
 
   // Endpoint para verificar el token JWT y obtener datos del usuario autenticado
-  @UseGuards(JwtAuthGuard)
-  @Get('profile')
-  getProfile(@Request() req) {
-    return req.user;
-  }
+@UseGuards(JwtAuthGuard)
+@Get('profile')
+async getProfile(@Request() req) {
+  const userId = req.user.userId;
+  return this.authService.getUserWithProfileAndArea(userId);
+}
+
 }

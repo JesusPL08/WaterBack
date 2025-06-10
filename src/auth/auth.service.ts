@@ -9,6 +9,15 @@ export class AuthService {
     private jwtService: JwtService,
     private prisma: PrismaService,
   ) {}
+async getUserWithProfileAndArea(userId: number) {
+  return this.prisma.user.findUnique({
+    where: { id: userId },
+    include: {
+      profile: true,
+      area: true,
+    },
+  });
+}
 
   async validateLogin(user: string, password: string) {
     const login = await this.prisma.login.findFirst({
